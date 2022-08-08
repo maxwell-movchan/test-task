@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "text-with-image": {
+      "type": "text-with-image",
+      "settings": {
+        "title": "Responsive left-aligned hero with image",
+        "text": ""
+      }
+    },
+    "text-with-slides": {
+      "type": "text-with-slides",
+      "blocks": {
+        "35c38619-4eea-47a3-a1d5-eb9e0b30c214": {
+          "type": "slide",
+          "settings": {
+            "title": "Doctor",
+            "category_icon": "shopify:\/\/shop_images\/image_33.png",
+            "headline": "Board-certified doctors",
+            "headline_icon": "doctor",
+            "category_color": "violet",
+            "text": "",
+            "tags_list": "",
+            "featured_list": "Board-certified and specifically trained on weight loss medication; Virtual appointments, no in-person office visits required; Found doctors customize the program to your specific needs",
+            "link_name": "Continue",
+            "link_url": "",
+            "label": "Starting at $99\/month"
+          }
+        },
+        "b2f4d998-15f0-4483-a907-8e18fa60b175": {
+          "type": "slide",
+          "settings": {
+            "title": "Coach",
+            "category_icon": "shopify:\/\/shop_images\/image_7.png",
+            "headline": "",
+            "headline_icon": "doctor",
+            "category_color": "blue",
+            "text": "",
+            "tags_list": "",
+            "featured_list": "",
+            "link_name": "Continue",
+            "link_url": "",
+            "label": ""
+          }
+        },
+        "656f12d2-8df4-4a44-8bf3-ef82966cb74e": {
+          "type": "slide",
+          "settings": {
+            "title": "App",
+            "category_icon": "shopify:\/\/shop_images\/18651ffea5648a49af9f1e627ce3921f.png",
+            "headline": "",
+            "headline_icon": "doctor",
+            "category_color": "green",
+            "text": "",
+            "tags_list": "",
+            "featured_list": "",
+            "link_name": "Continue",
+            "link_url": "",
+            "label": ""
+          }
+        },
+        "c4b50f28-e2f8-4294-8590-6f2403d92c53": {
+          "type": "slide",
+          "settings": {
+            "title": "Medication",
+            "category_icon": "shopify:\/\/shop_images\/image_6.png",
+            "headline": "",
+            "headline_icon": "doctor",
+            "category_color": "yellow",
+            "text": "",
+            "tags_list": "",
+            "featured_list": "",
+            "link_name": "Continue",
+            "link_url": "",
+            "label": ""
+          }
+        },
+        "de77d583-416e-4667-9512-0f14201dcaa5": {
+          "type": "slide",
+          "settings": {
+            "title": "Community",
+            "category_icon": "shopify:\/\/shop_images\/c2c05b7e1d238fb3af57f990988c2a2d.png",
+            "headline": "",
+            "headline_icon": "doctor",
+            "category_color": "purple",
+            "text": "",
+            "tags_list": "",
+            "featured_list": "",
+            "link_name": "Continue",
+            "link_url": "",
+            "label": ""
+          }
+        }
+      },
+      "block_order": [
+        "35c38619-4eea-47a3-a1d5-eb9e0b30c214",
+        "b2f4d998-15f0-4483-a907-8e18fa60b175",
+        "656f12d2-8df4-4a44-8bf3-ef82966cb74e",
+        "c4b50f28-e2f8-4294-8590-6f2403d92c53",
+        "de77d583-416e-4667-9512-0f14201dcaa5"
+      ],
+      "settings": {
+        "headline": "The Found Program",
+        "text": "Weight loss has a multitude of facets, so our program is tailored to give our members the best experience possible.",
+        "desktop_bg": "type_1",
+        "mobile_bg": "type_2"
+      }
+    }
+  },
+  "order": [
+    "text-with-image",
+    "text-with-slides"
+  ]
+}

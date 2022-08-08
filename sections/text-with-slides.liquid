@@ -1,0 +1,263 @@
+<div class="text-with-slides-wrapper">
+  <div class="tws-info d-flex align-items-center justify-content-center">
+    <div class="tws-info__wrapper">
+      <div class="tws-info__header">
+        <h2>{{- section.settings.headline -}}</h2>
+        <p>{{- section.settings.text -}}</p>
+      </div>
+      {%- if section.blocks.size >= 1 -%}
+      <div class="tws-info__list-categories">
+        <ul class="d-flex flex-wrap">
+          {%- for block in section.blocks -%}
+            {%- if block.settings.title != blank -%}
+            <li class="color-{{ block.settings.category_color }} {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+              {%- if block.settings.category_icon != blank -%}
+              <div class="category-icon">
+                <img src="{{ block.settings.category_icon | img_url: "master" }}" alt="{{ block.settings.title }}">
+              </div>
+              {%- endif -%}
+              <span>{{- block.settings.title -}}</span>
+            </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {% endif %}
+    </div>
+  </div>
+
+  <div class="tws-list-section">
+    {%- assign section_bg = section.settings.desktop_bg -%}
+
+    {%- for block in section.blocks -%}
+      {%- if forloop.first -%}
+        {%- assign svg_color = block.settings.category_color -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    <div class="tws-list-section__bg color-{{ svg_color }}">
+      {%- render 'icons-svg', icon: section_bg -%}
+    </div>
+
+    <div class="list-category-blocks swiper">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="swiper-slide">
+            <div class="block-category color-{{ block.settings.category_color }}">
+              <div class="block-category__header d-flex align-items-center flex-nowrap">
+                {%- assign headline_icon = block.settings.headline_icon -%}
+                {%- render "icons-svg", icon: headline_icon -%}
+                <h4>{{ block.settings.headline }}</h4>
+              </div>
+
+              {%- if block.settings.text -%}
+                <p>{{- block.settings.text -}}</p>
+              {%- endif -%}
+
+              {%- if block.settings.tags_list != blank -%}
+                {%- assign tags_arr = block.settings.tags_list | split: "; " -%}
+
+                <div class="list-tags">
+                  <ul class="d-flex align-items-center flex-wrap">
+                    {%- for tag in tags_arr -%}
+                    <li>
+                      <span>{{ tag }}</span>
+                      {%- render "icons-svg", icon: "info" -%}
+                    </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.featured_list != blank -%}
+                {%- assign benefits_arr = block.settings.featured_list | split: "; " -%}
+
+                <div class="list-benefits">
+                  <ul>
+                    {%- for tag in benefits_arr -%}
+                      <li>
+                        <div class="icon d-flex align-items-center justify-content-center">
+                          {%- render "icons-svg", icon: "check" -%}
+                        </div>
+                        <span>{{ tag }}</span>
+                      </li>
+                      {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+
+              <a class="th-btn" href="{{ block.settings.link_url }}">{{ block.settings.link_name }}</a>
+              <span class="label">{{ block.settings.label }}</span>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text with slides",
+  "class": "text-with-slides-wrapper__section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "desktop_bg",
+      "label": "Section background (Desktop)",
+      "options": [
+        {
+          "value": "type_1",
+          "label": "Type 1"
+        },
+        {
+          "value": "type_2",
+          "label": "Type 2"
+        }
+      ],
+      "default": "type_1"
+    },
+    {
+      "type": "select",
+      "id": "mobile_bg",
+      "label": "Section background (Mobile)",
+      "options": [
+        {
+          "value": "type_1",
+          "label": "Type 1"
+        },
+        {
+          "value": "type_2",
+          "label": "Type 2"
+        }
+      ],
+      "default": "type_2"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Text slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category name"
+        },
+        {
+          "type": "image_picker",
+          "id": "category_icon",
+          "label": "Category icon"
+        },
+        {
+          "type": "header",
+          "content": "Text block settings"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline"
+        },
+        {
+          "type": "select",
+          "id": "headline_icon",
+          "label": "Headline icon",
+          "options": [
+            {
+              "value": "doctor",
+              "label": "Doctor"
+            },
+            {
+              "value": "coach",
+              "label": "Coach"
+            },
+            {
+              "value": "app",
+              "label": "App"
+            },
+            {
+              "value": "medication",
+              "label": "Medication"
+            },
+            {
+              "value": "community",
+              "label": "Community"
+            }
+          ],
+          "default": "doctor"
+        },
+        {
+          "type": "select",
+          "id": "category_color",
+          "label": "Color",
+          "options": [
+            {
+              "value": "violet",
+              "label": "Violet"
+            },
+            {
+              "value": "blue",
+              "label": "Blue"
+            },
+            {
+              "value": "green",
+              "label": "Green"
+            },
+            {
+              "value": "yellow",
+              "label": "Yellow"
+            },
+            {
+              "value": "purple",
+              "label": "Purple"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "textarea",
+          "id": "tags_list",
+          "label": "Tags list",
+          "info": "Please separate the values with a semicolon"
+        },
+        {
+          "type": "textarea",
+          "id": "featured_list",
+          "label": "Featurd list",
+          "info": "Please separate the values with a semicolon"
+        },
+        {
+          "type": "text",
+          "id": "link_name",
+          "label": "Link name",
+          "default": "Continue"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

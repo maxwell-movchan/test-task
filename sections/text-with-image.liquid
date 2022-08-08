@@ -1,0 +1,49 @@
+<div class="container py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    {%- if section.settings.image != blank -%}
+      <div class="col-10 col-sm-8 col-lg-6">
+        {{ section.settings.image | image_url: height: 500 | image_tag: loading: 'lazy', alt: '', class: 'd-block mx-lg-auto img-fluid' }}
+        {% comment %} <img src="" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"> {% endcomment %}
+      </div>
+    {%- endif -%}
+
+    <div class="col-lg-6">
+      {%- if section.settings.title != blank -%}
+        <h1 class="display-5 fw-bold lh-1 mb-3">{{ section.settings.title }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="lead">{{ section.settings.text }}</p>
+      {%- endif -%}
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text with image",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Responsive left-aligned hero with image",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

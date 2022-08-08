@@ -1,0 +1,139 @@
+<footer class="bg-light">
+  <div class="container">
+    <div class="row py-5">
+      {%- if section.settings.newsletter_enable -%}
+      <div class="col-xl-3">
+        {%- if section.settings.newsletter_heading != blank -%}
+          <h5>{{ section.settings.newsletter_heading | escape }}</h5>
+        {%- endif -%}
+
+        {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div>
+            <label for="newsletter-form--{{ section.id }}" class="visually-hidden">Email</label>
+            <input
+              id="newsletter-form--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="form-control"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="newsletter-form-error"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="newsletter-form-success"
+              {% endif %}
+              placeholder="Enter email"
+              required
+            >
+            <button type="submit" name="commit" class="btn btn-primary mt-3" aria-label="Subscribe">Subscribe</button>
+
+            {%- if form.errors -%}
+              <div class="alert alert-danger mt-3" role="alert" id="newsletter-form-error">A simple danger alert—check it out!</div>
+            {%- endif -%}
+
+            {%- if form.posted_successfully? -%}
+              <div class="alert alert-success mt-3" role="alert" id="newsletter-form-success"  tabindex="-1" autofocus>Thanks for subscribing</div>
+            {%- endif -%}
+          </div>
+        {%- endform -%}
+      </div>
+     {%- endif -%}
+
+      <div class="col-xl-9">
+        <div class="row">
+          {%- for block in section.blocks -%}
+            <div class="col-xl-3">
+              <h5>{{ block.settings.heading }}</h5>
+              <ul class="list-unstyled">
+                {%- for link in block.settings.menu.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6">
+      </div>
+      <div div="col-xl-6">
+        <small class="copyright__content">Copyright &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
+        <small class="copyright__content">{{ powered_by_link }}</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Email signup",
+      "info": "Subscribers added automatically to your “accepted marketing” customer list."
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "Show email signup"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "default": "Subscribe to our emails",
+      "label": "Heading"
+    },
+    {
+      "type": "header",
+      "content": "Socila media icons",
+      "info": "To display your social media accounts, link them in your theme settings."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "Show social media icons"
+    },
+    {
+      "type": "header",
+      "content": "Payment methods"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "Show payment icons"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "Menu",
+          "info": "Displays only top-level menu items."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

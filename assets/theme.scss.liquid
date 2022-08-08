@@ -1,0 +1,619 @@
+@font-face {
+  font-family: 'Quincy CF';
+  src: local('Quincy CF Regular'), local('Quincy-CF-Regular'),
+      url('QuincyCF-Regular.woff2') format('woff2'),
+      url('QuincyCF-Regular.woff') format('woff'),
+      url('QuincyCF-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: local('Greycliff CF Bold'), local('Greycliff-CF-Bold'),
+      url('GreycliffCF-Bold.woff2') format('woff2'),
+      url('GreycliffCF-Bold.woff') format('woff'),
+      url('GreycliffCF-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: local('Greycliff CF Medium'), local('Greycliff-CF-Medium'),
+      url('GreycliffCF-Medium.woff2') format('woff2'),
+      url('GreycliffCF-Medium.woff') format('woff'),
+      url('GreycliffCF-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: local('Greycliff CF Regular'), local('Greycliff-CF-Regular'),
+      url('GreycliffCF-Regular.woff2') format('woff2'),
+      url('GreycliffCF-Regular.woff') format('woff'),
+      url('GreycliffCF-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Colors
+$colorViolet: {{ settings.color_violet | color_to_rgb }};
+$colorBlue: {{ settings.color_blue | color_to_rgb }};
+$colorGreen: {{ settings.color_green | color_to_rgb }};
+$colorYellow: {{ settings.color_yellow | color_to_rgb }};
+$colorPurple: {{ settings.color_purple | color_to_rgb }};
+
+$greycliff-bold: 700;
+$greycliff-medium: 500;
+$greycliff-regular: 400;
+
+body {
+  color: #10100E;
+  line-height: 1.5;
+}
+
+.text-with-slides-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1199.98px) {
+    height: auto;
+    flex-direction: column;
+  }
+}
+
+.tws-info,
+.tws-list-section {
+  width: 50%;
+
+  @media (max-width: 1199.98px) {
+    width: 100%;
+  }
+}
+
+.tws-info__wrapper {
+  max-width: 531px;
+
+  @media (max-width: 1199.98px) {
+    max-width: 100%;
+    padding: 80px 24px 40px;
+  }
+}
+
+.tws-info__header {
+  margin-bottom: 38px;
+
+  h2 {
+    font-family: 'Greycliff CF';
+    font-size: 62px;
+    line-height: 62px;
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+    font-weight: $greycliff-bold;
+
+    @media (max-width: 767.98px) {
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    font-family: 'Quincy CF';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+  }
+}
+
+.tws-info__list-categories {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 12px;
+
+    li {
+      padding: 12px 24px 12px 12px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 10px;
+      cursor: pointer;
+      transition: opacity ease-out 0.3s;
+
+      @media (max-width: 767.98px) {
+        padding: 8px 15px 8px 8px;
+        gap: 8px;
+      }
+
+      &:not(.active) {
+        opacity: 0.5;
+
+        span {
+          font-weight: $greycliff-regular;
+        }
+      }
+
+      &.color-violet {
+        background-color: rgba($colorViolet, 0.15);
+
+
+        .category-icon {
+          background-color: $colorViolet;
+        }
+      }
+
+      &.color-blue {
+        background-color: rgba($colorBlue, 0.15);
+
+        .category-icon {
+          background-color: $colorBlue;
+        }
+      }
+
+      &.color-green {
+        background-color: rgba($colorGreen, 0.15);
+
+        .category-icon {
+          background-color: $colorGreen;
+        }
+      }
+
+      &.color-yellow {
+        background-color: rgba($colorYellow, 0.15);
+
+        .category-icon {
+          background-color: $colorYellow;
+        }
+      }
+
+      &.color-purple {
+        background-color: rgba($colorPurple, 0.15);
+
+        .category-icon {
+          background-color: $colorPurple;
+        }
+      }
+
+      .category-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          display: block;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+        }
+      }
+
+      span {
+        font-family: 'Greycliff CF';
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: $greycliff-bold;
+
+        @media (max-width: 767.98px) {
+          font-size: 16px;
+          line-height:24px;
+        }
+      }
+    }
+  }
+}
+
+.tws-list-section {
+  position: relative;
+  height: 100%;
+}
+
+.tws-list-section__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  &.color-violet {
+    svg {
+      path {
+        fill: $colorViolet;
+      }
+    }
+  }
+
+  &.color-blue {
+    svg {
+      path {
+        fill: $colorBlue;
+      }
+    }
+  }
+
+  &.color-green {
+    svg {
+      path {
+        fill: $colorGreen;
+      }
+    }
+  }
+
+  &.color-yellow {
+    svg {
+      path {
+        fill: $colorYellow;
+      }
+    }
+  }
+
+  &.color-purple {
+    svg {
+      path {
+        fill: $colorPurple;
+      }
+    }
+  }
+
+  > svg {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media (max-width: 1199.98px) {
+      width: 100%;
+      height: auto;
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.block-category {
+  position: relative;
+  z-index: 4;
+  background: #FFFFFF;
+  box-shadow: 0px 20px 40px rgba(47, 47, 47, 0.2);
+  border-radius: 10px;
+  padding: 48px;
+
+  @media (max-width: 767.98px) {
+    padding: 32px 24px;
+  }
+
+  &.color-violet {
+    .list-tags {
+      ul {
+        li {
+          background-color: rgba($colorViolet, 0.15);
+        }
+      }
+    }
+    .list-benefits {
+      ul {
+        li {
+          .icon {
+            background-color: rgba($colorViolet, 0.15);
+
+            svg {
+              path {
+                stroke: $colorViolet;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.color-blue {
+    .list-tags {
+      ul {
+        li {
+          background-color: rgba($colorBlue, 0.15);
+        }
+      }
+    }
+    .list-benefits {
+      ul {
+        li {
+          .icon {
+            background-color: rgba($colorBlue, 0.15);
+
+            svg {
+              path {
+                stroke: $colorBlue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.color-green {
+    .list-tags {
+      ul {
+        li {
+          background-color: rgba($colorGreen, 0.15);
+        }
+      }
+    }
+    .list-benefits {
+      ul {
+        li {
+          .icon {
+            background-color: rgba($colorGreen, 0.15);
+
+            svg {
+              path {
+                stroke: $colorGreen;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.color-yellow {
+    .list-tags {
+      ul {
+        li {
+          background-color: rgba($colorYellow, 0.15);
+        }
+      }
+    }
+    .list-benefits {
+      ul {
+        li {
+          .icon {
+            background-color: rgba($colorYellow, 0.15);
+
+            svg {
+              path {
+                stroke: $colorYellow;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.color-purple {
+    .list-tags {
+      ul {
+        li {
+          background-color: rgba($colorPurple, 0.15);
+        }
+      }
+    }
+    .list-benefits {
+      ul {
+        li {
+          .icon {
+            background-color: rgba($colorPurple, 0.15);
+
+            svg {
+              path {
+                stroke: $colorPurple;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > p {
+    font-family: 'Greycliff CF';
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: $greycliff-regular;
+
+    &:not(:last-child){
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 767.98px) {
+      font-size: 16px;
+      line-height: 27px;
+    }
+  }
+
+  .list-tags {
+    &:not(:last-child){
+      margin-bottom: 24px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 8px;
+
+      li {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        border-radius: 8px;
+        padding: 12px;
+        gap: 8px;
+
+        svg {
+          width: 11px;
+          height: auto;
+        }
+
+        span {
+          font-size: 14px;
+          line-height: 17px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+
+          @media (max-width: 767.98px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .list-benefits {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-left: 5px;
+
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+
+        .icon {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          margin-right: 13px;
+          margin-top: 5px;
+          flex-shrink: 0;
+
+          svg {
+            width: 7px;
+            height: auto;
+          }
+        }
+
+        span {
+          font-size: 18px;
+          line-height: 26px;
+          font-family: 'Greycliff CF';
+          font-weight: $greycliff-regular;
+
+          @media (max-width: 767.98px) {
+            font-size: 16px;
+            line-height: 23px;
+          }
+        }
+      }
+    }
+  }
+
+  .label {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Greycliff CF';
+    font-weight: $greycliff-regular;
+    color: #10100E;
+  }
+}
+
+.block-category__header {
+  gap: 18px;
+
+  &:not(:last-child){
+    margin-bottom: 16px;
+  }
+
+  svg {
+    width: 24px;
+    height: auto;
+  }
+
+  h4 {
+    font-family: 'Greycliff CF';
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: $greycliff-bold;
+    margin: 0;
+
+    @media (max-width: 767.98px) {
+      font-size: 22px;
+      line-height: 32px;
+    }
+  }
+}
+
+.th-btn {
+  border-radius: 5px;
+  padding: 13px;
+  background: #10100E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Greycliff CF';
+  font-weight: $greycliff-bold;
+  font-size: 16px;
+  line-height: 17px;
+  letter-spacing: 1px;
+  transition: opacity ease-out 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.7;
+  }
+
+  &:not(:last-child){
+    margin-bottom: 24px;
+  }
+}
+
+.list-category-blocks {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 5;
+
+  @media (max-width: 1199.98px) {
+    width: auto;
+    height: auto;
+  }
+
+  .swiper-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+
+    @media (max-width: 1199.98px) {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 1199.98px) {
+        display: block;
+        padding: 32px 24px 66px;
+      }
+    }
+  }
+}

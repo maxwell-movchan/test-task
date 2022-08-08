@@ -1,0 +1,45 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "StartedKit",
+    "theme_version": "1.0.0",
+    "theme_author": "Max Movchan",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_violet",
+        "default": "#5A58CF",
+        "label": "Violet"
+      },
+      {
+        "type": "color",
+        "id": "color_blue",
+        "default": "#408BFC",
+        "label": "Blue"
+      },
+      {
+        "type": "color",
+        "id": "color_green",
+        "default": "#4F6258",
+        "label": "Green"
+      },
+      {
+        "type": "color",
+        "id": "color_yellow",
+        "default": "#F9D270",
+        "label": "Yellow"
+      },
+      {
+        "type": "color",
+        "id": "color_purple",
+        "default": "#CF6D58",
+        "label": "Purple"
+      }
+    ]
+  }
+]
